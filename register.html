@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Candela</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <span class="logo-icon">✨</span>
+                    <h1>Candela</h1>
+                </div>
+                <p class="auth-subtitle">Crea tu cuenta para acceder a Vibes Points</p>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="registerName">Nombre completo</label>
+                    <input type="text" id="registerName" name="nombre" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <input type="password" id="registerPassword" name="password" required autocomplete="new-password" minlength="8">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Registrarse</button>
+                <div id="registerError" class="form-error"></div>
+                <p class="auth-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html> 

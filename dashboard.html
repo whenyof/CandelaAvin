@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - Vibes Points | Candela</title>
+    <meta name="description" content="Gestiona tus Vibes Points, canjea recompensas y invita amigos para ganar más puntos.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💄</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">Candela</a></h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#servicios" class="nav-link">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#portafolio" class="nav-link">Portafolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#sobre-mi" class="nav-link">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contacto" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link btn-logout" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- User Header -->
+        <div class="user-header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <span class="avatar-icon">👤</span>
+                </div>
+                <div class="user-details">
+                    <h1 id="userName">Cargando...</h1>
+                    <p id="userEmail">cargando@email.com</p>
+                    <div class="user-level">
+                        <span class="level-badge" id="userLevel">Bronce</span>
+                        <span class="member-since">Miembro desde <span id="memberSince">2024</span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Eliminar este bloque de puntos grandes -->
+            <!-- <div class="points-display">
+                <div class="points-card">
+                    <div class="points-icon">✨</div>
+                    <div class="points-info">
+                        <h2 id="currentPoints">0</h2>
+                        <p>Vibes Points</p>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Eliminada la tabla de rangos aquí para evitar duplicados -->
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" data-tab="overview">Resumen</button>
+            <button class="tab-btn" data-tab="rewards">Recompensas</button>
+            <button class="tab-btn" data-tab="referrals">Referidos</button>
+            <button class="tab-btn" data-tab="history">Historial</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-pane active" id="overview">
+                <div class="overview-grid">
+                    <!-- Stats Cards -->
+                    <div class="stats-section">
+                        <h3>Estadísticas</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-info">
+                                    <h4 id="totalEarned">0</h4>
+                                    <p>Puntos ganados</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎁</div>
+                                <div class="stat-info">
+                                    <h4 id="totalRewards">0</h4>
+                                    <p>Recompensas</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-info">
+                                    <h4 id="totalReferrals">0</h4>
+                                    <p>Referidos</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-info">
+                                    <h4 id="nextLevel">500</h4>
+                                    <p>Puntos para Plata</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Acciones Rápidas</h3>
+                        <div class="actions-grid">
+                            <button class="action-btn" id="inviteFriendBtn">
+                                <span class="action-icon">👥</span>
+                                <span>Invitar Amigo</span>
+                            </button>
+                            <button class="action-btn" id="writeReviewBtn">
+                                <span class="action-icon">⭐</span>
+                                <span>Escribir Reseña</span>
+                            </button>
+                            <button class="action-btn" id="bookServiceBtn">
+                                <span class="action-icon">💄</span>
+                                <span>Reservar Servicio</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Tabla de Rangos y Beneficios -->
+                    <div class="levels-table-container">
+                        <h3>Rangos y Beneficios</h3>
+                        <table class="levels-table">
+                            <thead>
+                                <tr>
+                                    <th>Rango</th>
+                                    <th>Puntos</th>
+                                    <th>Beneficio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="level-badge" style="background:#cd7f32; color:white;">Bronce 🥉</span></td>
+                                    <td>0 - 499</td>
+                                    <td>Acceso básico a recompensas</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge" style="background:#bfc1c2; color:#333;">Plata 🥈</span></td>
+                                    <td>500 - 999</td>
+                                    <td>10% extra en recompensas</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge" style="background:#ffd700; color:#333;">Oro 🥇</span></td>
+                                    <td>1000+</td>
+                                    <td>15% extra en recompensas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Recent Activity -->
+                    <div class="recent-activity">
+                        <h3>Actividad Reciente</h3>
+                        <div class="activity-list" id="recentActivity">
+                            <!-- Activity items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rewards Tab -->
+            <div class="tab-pane" id="rewards">
+                <div class="rewards-section">
+                    <div class="rewards-header">
+                        <h3>Recompensas Disponibles</h3>
+                        <p>Canjea tus puntos por descuentos y beneficios exclusivos</p>
+                    </div>
+                    
+                    <div class="rewards-grid" id="rewardsGrid">
+                        <!-- Rewards will be loaded here -->
+                    </div>
+
+                    <div class="my-rewards">
+                        <h3>Mis Recompensas</h3>
+                        <div class="my-rewards-list" id="myRewardsList">
+                            <!-- User rewards will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referrals Tab -->
+            <div class="tab-pane" id="referrals">
+                <div class="referrals-section">
+                    <div class="referral-header">
+                        <h3>Invita Amigos y Gana</h3>
+                        <p>Comparte tu código y gana 150 puntos por cada amigo que se registre y compre</p>
+                    </div>
+
+                    <div class="referral-code-section">
+                        <div class="referral-code-card">
+                            <h4>Tu Código de Referido</h4>
+                            <div class="code-display">
+                                <span id="referralCode">VIBES123</span>
+                                <button class="copy-btn" id="copyCodeBtn">
+                                    <span class="copy-icon">📋</span>
+                                    Copiar
+                                </button>
+                            </div>
+                            <p class="code-description">Comparte este código con tus amigos</p>
+                        </div>
+
+                        <div class="referral-link-section">
+                            <h4>Link de Referido</h4>
+                            <div class="link-display">
+                                <input type="text" id="referralLink" readonly>
+                                <button class="copy-btn" id="copyLinkBtn">
+                                    <span class="copy-icon">📋</span>
+                                    Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="referral-stats">
+                        <div class="referral-stat">
+                            <h4>Referidos Completados</h4>
+                            <p id="completedReferrals">0</p>
+                        </div>
+                        <div class="referral-stat">
+                            <h4>Referidos Pendientes</h4>
+                            <p id="pendingReferrals">0</p>
+                        </div>
+                        <div class="referral-stat">
+                            <h4>Puntos Ganados</h4>
+                            <p id="referralPoints">0</p>
+                        </div>
+                    </div>
+
+                    <div class="referral-list">
+                        <h3>Lista de Referidos</h3>
+                        <div class="referrals-list" id="referralsList">
+                            <!-- Referrals will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div class="tab-pane" id="history">
+                <div class="history-section">
+                    <div class="history-header">
+                        <h3>Historial de Actividad</h3>
+                        <div class="history-filters">
+                            <button class="filter-btn active" data-filter="all">Todas</button>
+                            <button class="filter-btn" data-filter="earned">Ganados</button>
+                            <button class="filter-btn" data-filter="spent">Gastados</button>
+                        </div>
+                    </div>
+
+                    <div class="history-list" id="historyList">
+                        <!-- History items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Invite Friend Modal -->
+    <div class="modal" id="inviteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Invitar Amigo</h3>
+                <button class="modal-close" id="closeInviteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="inviteForm">
+                    <div class="form-group">
+                        <label for="friendEmail">Email de tu amigo</label>
+                        <input type="email" id="friendEmail" name="friendEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="friendName">Nombre de tu amigo (opcional)</label>
+                        <input type="text" id="friendName" name="friendName">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Enviar Invitación</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Escribir Reseña</h3>
+                <button class="modal-close" id="closeReviewModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="reviewRating">Valoración</label>
+                        <div class="rating-stars">
+                            <span class="star" data-rating="1">⭐</span>
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="3">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="5">⭐</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewText">Tu reseña</label>
+                        <textarea id="reviewText" name="reviewText" rows="4" required placeholder="Cuéntanos tu experiencia..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Publicar Reseña</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+    // --- DASHBOARD AUTH & PROFILE LOADER ---
+    const API_URL = "http://localhost:3000/api";
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Verificar token
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            window.location.href = 'login.html';
+            return;
+        }
+        // 2. Cargar perfil
+        fetch(`${API_URL}/user/profile`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('No autorizado');
+            return res.json();
+        })
+        .then(data => {
+            const user = data.user;
+            document.getElementById('userName').textContent = user.nombre;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userLevel').textContent = user.nivel;
+            document.getElementById('currentPoints').textContent = user.puntos;
+            document.getElementById('referralCode').textContent = user.refer_code;
+            document.getElementById('memberSince').textContent = (user.fecha_registro || '').slice(0, 10);
+        })
+        .catch(err => {
+            localStorage.removeItem('authToken');
+            window.location.href = 'login.html';
+        });
+        // 3. Logout
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('authToken');
+                window.location.href = 'login.html';
+            });
+        }
+    });
+    </script>
+</body>
+</html> 
